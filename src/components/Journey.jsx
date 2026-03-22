@@ -11,23 +11,23 @@ const MILESTONES = [
     side: "left",
   },
   {
-    title: "Gurukulam Public School",
+    title: "GVHSS Payyoli",
     subtitle: "Higher Secondary Education",
     desc: "Completed higher secondary education specializing in Computer Science.",
-    year: "2021 – 2023",
+    year: "2020 – 2022",
     side: "right",
   },
   {
-    title: "Gurukulam Public School",
+    title: "United Public School",
     subtitle: "Secondary Education",
-    desc: "Completed primary and high school education.",
-    year: "2010 – 2021",
+    desc: "Completed high school education.",
+    year: "2019 – 2020",
     side: "left",
   },
 ];
 
 export default function Journey() {
-  return (<section id="journey" className="py-20 lg:py-28"> <div className="max-w-5xl mx-auto px-6">
+  return (<section className="py-20 lg:py-28"> <div className="max-w-5xl mx-auto px-6">
     {/* Heading */}
     <motion.p
       initial={{ opacity: 0, y: 15 }}
@@ -68,7 +68,7 @@ export default function Journey() {
             >
               {/* Card */}
               <div className={`flex-1 ${isLeft ? "md:pr-10" : "md:pl-10"}`}>
-                <div className="glass-card rounded-2xl p-6 border border-white/10 hover:border-green-400/30 transition-all duration-300 hover:scale-[1.02]">
+                <div className="glass-card rounded-2xl p-6 border border-white/10 hover:border-green-400/30 transition-all duration-300 hover:scale-[1.02] border-l-2 border-l-green-400/50 md:border-l-white/10">
 
                   {/* Top Row */}
                   <div className="flex items-center justify-between mb-3">
@@ -107,23 +107,9 @@ export default function Journey() {
           );
         })}
       </div>
-
-      {/* Current Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.4 }}
-        className="mt-12 flex justify-center"
-      >
-        <div className="flex items-center gap-2 px-4 py-2 rounded-full glass border border-green-500/30 text-green-400 text-sm font-medium">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          Currently here — and growing fast
-        </div>
-      </motion.div>
     </div>
   </div>
   </section>
 
-);
+  );
 }

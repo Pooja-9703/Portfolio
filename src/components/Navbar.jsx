@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { label: "Home",     href: "#home"     },
@@ -13,16 +14,18 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen]     = useState(false);
-  const [scrolled, setScrolled]     = useState(false);
-  const [activeSection, setActive]  = useState("home");
+  const [menuOpen, setMenuOpen]    = useState(false);
+  const [scrolled, setScrolled]    = useState(false);
+  const [activeSection, setActive] = useState("home");
+  const pathname = usePathname();
+  const isHome   = pathname === "/";
 
-  /* scroll listener */
+  /* scroll listener — only meaningful on home page */
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const sections = ["home","about","skills","projects","journey"];
+      const sections = ["home", "about", "skills", "projects", "journey"];
       let current = "home";
       for (const id of sections) {
         const el = document.getElementById(id);
@@ -35,13 +38,15 @@ export default function Navbar() {
   }, []);
 
   const handleAnchor = (e, href) => {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      setMenuOpen(false);
-      const el = document.getElementById(href.slice(1));
-      el?.scrollIntoView({ behavior: "smooth" });
+    if (!href.startsWith("#")) { setMenuOpen(false); return; }
+    e.preventDefault();
+    setMenuOpen(false);
+    if (isHome) {
+      // Already on home — smooth scroll to section
+      document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" });
     } else {
-      setMenuOpen(false);
+      // On another page (e.g. /contact) — navigate to home + hash
+      window.location.href = "/" + href;
     }
   };
 
@@ -63,16 +68,27 @@ export default function Navbar() {
           {/* Desktop Links */}
           <ul className="hidden md:flex items-center gap-1">
             {NAV_LINKS.map(({ label, href }) => {
-              const id     = href.startsWith("#") ? href.slice(1) : null;
-              const isActive = id === activeSection;
+              const id = href.startsWith("#") ? href.slice(1) : null;
+              // Active dot only on home page for anchor links; on /contact highlight "Contact"
+              const isActive = href.startsWith("/")
+                ? pathname === href
+                : isHome && id === activeSection;
+
               return (
                 <li key={label}>
                   {href.startsWith("/") ? (
                     <Link
                       href={href}
-                      className="relative px-4 py-2 text-sm font-medium text-slate-400 hover:text-blue-400 transition-colors rounded-md hover:bg-blue-500/10"
+                      className={`relative px-4 py-2 text-sm font-medium rounded-md transition-all ${
+                        isActive
+                          ? "text-blue-400 bg-blue-500/10"
+                          : "text-slate-400 hover:text-blue-400 hover:bg-blue-500/10"
+                      }`}
                     >
                       {label}
+                      {isActive && (
+                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full" />
+                      )}
                     </Link>
                   ) : (
                     <a

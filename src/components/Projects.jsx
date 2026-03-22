@@ -10,7 +10,7 @@ const PROJECTS = [
     description:
       "A real-time system monitoring tool that detects OS-level deadlocks using wait-for graph cycle detection (DFS). Provides live process tracking, visual graph output, and instant alerts when deadlock conditions are found.",
     tech: ["Python", "Bash", "Graph Theory", "OS Internals", "DFS Algorithm"],
-    github: "https://github.com/",
+    github: "https://github.com/BenGJ10/LockX",
     demo: null,
     icon: "🔒",
     gradient: "from-red-500/20 via-orange-500/10 to-transparent",
@@ -20,12 +20,12 @@ const PROJECTS = [
   {
     id: "flashcard",
     featured: false,
-    title: "AI-Personalized Flashcard Creator",
+    title: "RecallBot – AI-Personalized Flashcard Creator",
     description:
       "An AI-powered chatbot that generates personalized study flashcards from any topic. Integrates the Gemini API to create concise, structured flashcards on-demand — ideal for students and self-learners.",
     tech: ["HTML", "CSS", "JavaScript", "Gemini API"],
-    github: "https://github.com/",
-    demo: "#",
+    github: "https://github.com/Pooja-9703/RecallBot",
+    demo: null,
     icon: "🤖",
     gradient: "from-blue-500/20 via-cyan-500/10 to-transparent",
     border: "border-blue-500/30",
@@ -34,12 +34,12 @@ const PROJECTS = [
   {
     id: "food",
     featured: false,
-    title: "Food Delivery Website",
+    title: "FlavorFiesta – Food Delivery Website",
     description:
       "A responsive food delivery UI featuring a multi-page ordering system, interactive menu, cart management, and order confirmation flow. Clean, modern UI designed for mobile-first experience.",
     tech: ["HTML", "CSS", "JavaScript"],
-    github: "https://github.com/",
-    demo: "#",
+    github: "https://github.com/Pooja-9703/FlavorFiesta",
+    demo: null,
     icon: "🍕",
     gradient: "from-yellow-500/20 via-orange-400/10 to-transparent",
     border: "border-yellow-500/30",
@@ -103,13 +103,7 @@ export default function Projects() {
               bg-gradient-to-br ${project.gradient}
               hover:shadow-2xl ${project.glow} transition-all duration-300`}
           >
-            {/* Featured badge */}
-            {project.featured && (
-              <span className="absolute top-4 right-4 sm:top-6 sm:right-6 px-3 py-1 text-xs font-bold
-                rounded-full bg-red-500/20 text-red-300 border border-red-500/40 uppercase tracking-widest">
-                ⭐ Featured
-              </span>
-            )}
+
 
             <div className="flex items-start gap-4">
               <div className="text-3xl mt-1 flex-shrink-0">{project.icon}</div>
@@ -174,7 +168,7 @@ export default function Projects() {
             <p className="text-sm text-slate-400">A suite of system administration and security audit scripts</p>
           </div>
           <a
-            href="https://github.com/"
+            href="https://github.com/Pooja-9703"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-auto btn-secondary py-2 px-4 text-sm"

@@ -5,20 +5,19 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const ROLES = [
-  "Cybersecurity Researcher",
-  "Full-Stack Developer",
-  "Systems Tool Builder",
-  "Automation Enthusiast",
+  "Cybersecurity & Systems Developer",
+  "Full-Stack Web Developer",
+  "Linux & System Tool Builder",
 ];
 
 function TypeWriter() {
-  const [text, setText]           = useState("");
-  const [roleIdx, setRoleIdx]     = useState(0);
-  const [deleting, setDeleting]   = useState(false);
+  const [text, setText] = useState("");
+  const [roleIdx, setRoleIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     const current = ROLES[roleIdx];
-    const speed   = deleting ? 45 : 90;
+    const speed = deleting ? 45 : 90;
 
     const t = setTimeout(() => {
       if (!deleting) {
@@ -54,6 +53,8 @@ export default function Hero() {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
+
+
   return (
     <section
       id="home"
@@ -88,7 +89,7 @@ export default function Hero() {
             <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold leading-tight mb-4">
               Hello, I&apos;m{" "}
               <span className="gradient-text-blue text-glow">
-                Pooja Sindhu
+                Pooja Dheeraj Sindhu
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-slate-400 mb-6 min-h-[2rem]">
@@ -122,7 +123,12 @@ export default function Hero() {
               </svg>
               View Projects
             </button>
-            <a href="/resume.pdf" download className="btn-secondary">
+            <a
+              href="https://resumepoojadheeraj.tiiny.site"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
@@ -167,11 +173,12 @@ export default function Hero() {
             {/* Avatar */}
             <div className="relative mx-auto w-40 h-40 mb-4">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 via-cyan-400 to-purple-500 p-0.5">
-                <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center overflow-hidden">
-                  {/* Initials avatar */}
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-900/80 to-purple-900/80 flex items-center justify-center">
-                    <span className="text-4xl font-bold gradient-text">PDS</span>
-                  </div>
+                <div className="w-full h-full rounded-full bg-slate-900 overflow-hidden">
+                  <img
+                    src="/profile.jpg"
+                    alt="Pooja Dheeraj Sindhu"
+                    className="w-full h-full object-cover object-top rounded-full"
+                  />
                 </div>
               </div>
               {/* Online dot */}
@@ -185,11 +192,10 @@ export default function Hero() {
             </div>
 
             {/* Stats row */}
-            <div className="grid grid-cols-3 gap-2 pt-4 border-t border-white/8">
+            <div className="grid grid-cols-2 gap-2 pt-4 border-t border-white/8">
               {[
-                { n: "4+",  label: "Projects" },
+                { n: "4+", label: "Projects" },
                 { n: "10+", label: "Linux Tools" },
-                { n: "2+",  label: "Years Exp" },
               ].map(({ n, label }) => (
                 <div key={label} className="text-center">
                   <p className="text-lg font-bold text-blue-400">{n}</p>

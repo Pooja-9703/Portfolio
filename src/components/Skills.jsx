@@ -121,12 +121,12 @@ export default function Skills() {
             </div>
             <div className="flex flex-wrap gap-2">
               {cat.skills.map(sk => (
-                <div key={sk.name} className="flex items-center gap-1.5">
-                  <span className="text-sm text-slate-300">{sk.name}</span>
-                  <span className={`text-xs px-2 py-0.5 rounded-full border ${LEVEL_COLOR[sk.level]}`}>
-                    {sk.level}
-                  </span>
-                </div>
+                <span
+                  key={sk.name}
+                  className="text-sm px-3 py-1 rounded-full bg-slate-800/60 border border-white/8 text-slate-300"
+                >
+                  {sk.name}
+                </span>
               ))}
             </div>
           </motion.div>
